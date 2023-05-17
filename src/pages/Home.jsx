@@ -1,6 +1,11 @@
+import Navbar from '../components/Navbar';
+
 function Home() {
   return (
-    <div>Homepage / Feed (show after login)</div>
+    <>
+      <Navbar />
+      <div>Homepage / Feed (show after login)</div>
+    </>
   )
 }
 export default Home

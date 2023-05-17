@@ -1,6 +1,6 @@
 function Landing() {
   return (
-    <div>Landing (show when not logged in)</div>
+    <div>Landing page</div>
   )
 }
 export default Landing
