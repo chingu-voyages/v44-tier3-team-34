@@ -56,19 +56,10 @@ const GlobalStyle = createGlobalStyle`
     }
 
     header ul {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    list-style: none;
-    }
-
-    .container {
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 1.25rem 1rem 1.25rem;
-    text-align: center;
-    color: var(--primary-blue);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
     }
 `;
  
