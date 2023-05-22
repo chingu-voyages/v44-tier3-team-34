@@ -8,6 +8,7 @@ export default {
   theme: {
     colors: {
       'green': '#1EB88D',
+      'page-color': 'efeeee',
       'light-green': '#C0E862',
       'light-blue': '#2F4858',
       'dark-blue': '#0D1C2E',
