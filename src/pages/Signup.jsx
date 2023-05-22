@@ -83,7 +83,7 @@ function Signup () {
           <input 
             onChange={(e) => setConfirmPassword(e.target.value)} 
             className="border" 
-            type="confirmPassword" 
+            type="password" 
             id="confirmPassword" 
             value={confirmPassword} 
             required
