@@ -13,13 +13,13 @@ function Login () {
 
   const [login, { isLoading, isError }] = useLoginMutation();
 
-  const { user } = useSelector((state) => state.auth);
+  const { userToken } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    if (user) {
+    if (userToken) {
       navigate('/home');
     }
-  }, [navigate, user]);
+  }, [navigate, userToken]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -35,19 +35,34 @@ function Login () {
 
   return (
     <>
-      <form onSubmit={submitHandler}>
+      <h1>Login Page</h1>
+      <form onSubmit={submitHandler} className="w-80 m-auto">
         <div>
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input 
+            onChange={(e) => setEmail(e.target.value)}
+            className="border" 
+            type="email" 
+            id="email" 
+            value={email} 
+            placeholder="enter email"  
+          />
         </div>
         <div>
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input 
+            onChange={(e) => setPassword(e.target.value)} 
+            className="border" 
+            type="password" 
+            id="password" 
+            value={password} 
+          />
         </div>
-        <button type="submit" disabled={isLoading}>
+        <button type="submit" disabled={isLoading} className="border">
           {isLoading ? 'Loading...' : 'Login'}   
         </button>
-      </form>   
+      </form>  
+      <p>Go to Sign up - <Link className="underline" to="/signup">Signup</Link></p> 
     </>
   )
 }

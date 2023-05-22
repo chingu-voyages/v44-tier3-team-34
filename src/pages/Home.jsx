@@ -1,10 +1,25 @@
+import { useEffect } from 'react'; 
+import { useDispatch, useSelector } from 'react-redux'; // to dispatch actions and select data from the store
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 function Home() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { user } = useSelector((state) => state.auth);
+  console.log({user});
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/');
+    }
+  }, [navigate, user]);
+
   return (
     <>
       <Navbar />
-      <div>Homepage / Feed (show after login)</div>
+      <div className="w-2/3 m-auto pt-8 text-3xl font-medium">{user ? `Welcome ${user.name}` : 'Not logged in'}!</div>
     </>
   )
 }

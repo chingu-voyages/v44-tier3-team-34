@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import jwt_decode from 'jwt-decode'
 
 const initialState = {
-  user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null
+  userToken: localStorage.getItem('userToken') ? localStorage.getItem('userToken') : null,
+  user: localStorage.getItem('userToken') ? jwt_decode(localStorage.getItem('userToken')).user : null
 };
 
 const authSlice = createSlice({
@@ -9,12 +11,15 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setCredentials: (state, action) => {
-      state.user = action.payload;
-      localStorage.setItem('user', JSON.stringify(action.payload));
+      console.log(action.payload)
+      console.log("jwtdecode", jwt_decode(action.payload.token).user)
+      state.userToken = action.payload.token;
+      state.user = jwt_decode(action.payload.token).user;
+      localStorage.setItem('userToken', (action.payload.token));
     },
     logout: (state, action) => {
-      state.user = null;
-      localStorage.removeItem('user');
+      state.userToken = null;
+      localStorage.removeItem('userToken');
     },
   },
 });
