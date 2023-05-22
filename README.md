@@ -140,6 +140,12 @@ To run the project, execute the following command:
   npm run dev
 ```
 
+## Linters
+To fix Eslint linter erros run:
+
+```sh
+npx eslint . --fix
+```
 
 ### Run tests
 
