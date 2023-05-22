@@ -6,6 +6,7 @@ import { setCredentials } from '../slices/authSlice'; // will set credentials af
 import { imageURL } from '../utilities/constants';
 
 function Login () {
+  /* eslint-disable no-unused-vars */
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -46,7 +47,6 @@ function Login () {
     </div>
       
       <form onSubmit={submitHandler} className="w-80 m-auto flex justify-center flex-col gap-y-4 my-9">
-\
           <input 
             onChange={(e) => setEmail(e.target.value)}
             className="border rounded py-1.5 pl-1.5 border-light-blue text-dark-blue text-lg"  

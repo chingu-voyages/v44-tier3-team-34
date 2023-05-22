@@ -6,6 +6,7 @@ import { setCredentials } from '../slices/authSlice'; // will set credentials af
 import { imageURL } from '../utilities/constants';
 
 function Signup () {
+  /* eslint-disable no-unused-vars */
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
