@@ -46,7 +46,6 @@ function Login () {
     </div>
       
       <form onSubmit={submitHandler} className="w-80 m-auto flex justify-center flex-col gap-y-4 my-9">
-\
           <input 
             onChange={(e) => setEmail(e.target.value)}
             className="border rounded py-1.5 pl-1.5 border-light-blue text-dark-blue text-lg"  
