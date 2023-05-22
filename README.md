@@ -144,7 +144,7 @@ To run the project, execute the following command:
 To fix Eslint linter erros run:
 
 ```sh
-npx eslint . --fix
+npx eslint "**/*.{js,jsx}" --fix
 ```
 
 ### Run tests
