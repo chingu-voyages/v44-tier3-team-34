@@ -1,6 +1,18 @@
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../slices/authSlice';
 
 function Navbar() {
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/');
+  };
+
   return (
     <header>
       <nav>
@@ -20,6 +32,10 @@ function Navbar() {
           <li>
             <Link to="/profile">Profile</Link>
           </li>
+          { user && <li>
+              <button onClick={handleLogout}>Logout</button>
+            </li> 
+          }
         </ul>
       </nav>
     </header>
