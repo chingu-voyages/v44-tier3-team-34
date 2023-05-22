@@ -5,8 +5,8 @@ import { useLoginMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice'; // will set credentials after successful login
 
 function Login () {
-  const [email, setEmail] = useState('z@email.com');
-  const [password, setPassword] = useState('zzzzzz');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ function Login () {
       navigate('/home');
     } catch (err) {
       console.log({err})
-      console.log(err?.data?.error || err.error);
+      console.log(err?.data?.error || "there was a problem logging in");
     }
   };
 
