@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 
 function Home() {
   /* eslint-disable no-unused-vars */
+  /* eslint-disable no-undef */
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
