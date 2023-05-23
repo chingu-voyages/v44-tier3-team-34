@@ -1,8 +1,7 @@
-import React from "react";
 import { FiEdit, AiFillDelete, AiFillLike, BiCommentDetail, FaShareSquare } from "react-icons/all";
+import PropTypes from 'prop-types'
 
-const Post = ({post: {id, name, profilePhoto, time, description, postPhoto, likes, comments}}) => {
-    console.log("Post: ", id, name)
+const Post = ({post: {name, profilePhoto, time, description, postPhoto, likes, comments}}) => {
     return(
         <div className="bg-white my-4 flex flex-col">
             <div className="px-2">
@@ -36,5 +35,17 @@ const Post = ({post: {id, name, profilePhoto, time, description, postPhoto, like
         </div>
     )
 }
+
+Post.propTypes = {
+    post: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      profilePhoto: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      postPhoto: PropTypes.string.isRequired,
+      likes: PropTypes.number,
+      comments: PropTypes.number.isRequired,
+    }).isRequired,
+  };
 
 export default Post

@@ -1,9 +1,6 @@
-import React from "react";
 import { logo } from "../utilities/constants";
 import { AiFillHome, BsFillPersonPlusFill, BsChatDots, MdNotificationsActive, FaShoppingBag, AiOutlineSearch, IoSettingsSharp } from 'react-icons/all'
 import { Link } from "react-router-dom";
-import Home from "../pages/Home";
-import Login from "../pages/Login";
 
 const Header = () => {
     return(
