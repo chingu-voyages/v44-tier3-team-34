@@ -3,18 +3,18 @@ import PropTypes from 'prop-types'
 
 const Post = ({post: {name, profilePhoto, time, description, postPhoto, likes, comments}}) => {
     return(
-        <div className="bg-white my-4 flex flex-col">
-            <div className="px-2">
-                <div className="flex justify-between">
-                    <div>
-                        <img src={profilePhoto} alt={name}/>
+        <div className="bg-white my-4 flex flex-col py-2">
+            <div className="px-2 flex justify-between">
+                <div className="flex gap-2">
+                    <div className="rounded-full">
+                        <img src={profilePhoto} alt={name} className="rounded-full h-14 w-14 object-cover"/>
                     </div>
                     <ul>
                         <li>{name}</li>
                         <li>{time}</li>
                     </ul>
                 </div>
-                <ul>
+                <ul className="flex gap-2">
                     <li><FiEdit/></li>
                     <li><AiFillDelete/></li>
                 </ul>
