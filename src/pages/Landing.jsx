@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import Posts from '../components/Posts';
 
 function Landing() {
   return (
-    <>
+    <div className='bg-page-color'>
       <section className="flex items-center justify-center relative bg-light-green bg-hero bg-cover bg-center h-[331px] md:h-[400px]">
         <div className="absolute top-16 bg-opacity-75 bg-light-blue w-full max-w-[90%] rounded mx-8 p-4 text-center md:top-[425px] md:max-w-xl md:flex md:items-center md:justify-around">
           <h1 className="text-5xl md:text-7xl text-light-green font-medium text-shadow">PetPals</h1>
@@ -24,7 +25,8 @@ function Landing() {
       <p className="text-lg text-dark-blue max-w-2xl pb-8 mx-auto"> Already have an account? <Link to="/login" className="text-light-green hover:underline">Login</Link></p>
       </div>
       <Header/>
-    </>
+      <Posts/>
+    </div>
   );
 }
 
