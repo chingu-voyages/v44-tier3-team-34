@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 
 function Landing() {
   return (
@@ -22,6 +23,7 @@ function Landing() {
       <a href="/signup" className="rounded uppercase font-medium text-xl inline-block mb-4 py-4 px-8 w-96 max-w-[90%] bg-light-green hover:opacity-50">Get Started</a>
       <p className="text-lg text-dark-blue max-w-2xl pb-8 mx-auto"> Already have an account? <Link to="/login" className="text-light-green hover:underline">Login</Link></p>
       </div>
+      <Header/>
     </>
   );
 }

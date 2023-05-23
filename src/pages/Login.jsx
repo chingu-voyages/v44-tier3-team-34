@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'; // to dispatch actions a
 import { useLoginMutation } from '../slices/usersApiSlice'; 
 import { setCredentials } from '../slices/authSlice'; // will set credentials after successful login
 import { imageURL } from '../utilities/constants';
+import Header from '../components/Header';
 
 function Login () {
   /* eslint-disable no-unused-vars */
@@ -68,6 +69,7 @@ function Login () {
         </button>
       </form>  
       <p className='flex justify-center my-1.5'>Go to Sign up - <Link className="underline text-green ml-1" to="/signup">Signup</Link></p> 
+      <Header/>
     </div>
   )
 }
