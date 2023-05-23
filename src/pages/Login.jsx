@@ -30,7 +30,6 @@ function Login () {
       dispatch(setCredentials({ ...res })); // set to localstorage and state
       navigate('/home');
     } catch (err) {
-      console.log({err})
       console.log(err?.data?.error || "there was a problem logging in");
     }
   };
