@@ -15,8 +15,9 @@ const authSlice = createSlice({
       state.user = jwt_decode(action.payload.token).user;
       localStorage.setItem('userToken', (action.payload.token));
     },
-    logout: (state, action) => {
+    logout: (state) => {
       state.userToken = null;
+      state.user = null;
       localStorage.removeItem('userToken');
     },
   },

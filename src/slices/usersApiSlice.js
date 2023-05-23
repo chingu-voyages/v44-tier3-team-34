@@ -3,6 +3,8 @@ import { apiSlice } from "./apiSlice";
 
 const USERS_URL = "/api/auth";
 
+const token = localStorage.getItem("userToken");
+
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({
@@ -19,7 +21,19 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         body: credentials,
       }),
     }),
+    changePassword: builder.mutation({
+      query: (credentials) => {
+        return {
+          url: `${USERS_URL}/change-password`,
+          method: "POST",
+          body: credentials,
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem("userToken")}`,
+          },
+        }
+      },
+    }),
   }),
 });
 
-export const { useLoginMutation, useSignupMutation } = usersApiSlice;
+export const { useLoginMutation, useSignupMutation, useChangePasswordMutation } = usersApiSlice;
