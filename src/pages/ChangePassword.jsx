@@ -8,6 +8,7 @@ import Navbar from '../components/Navbar';
 function ChangePassword () {
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,8 +25,12 @@ function ChangePassword () {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    if (newPassword !== confirmNewPassword) {
+      return console.log("Passwords don't match");
+    }
     try {
       const res = await changePassword({ password, newPassword }).unwrap(); // unwrap() will return the actual data from the promise
+      console.log({ res })
       dispatch(setCredentials({ ...res })); // set to localstorage and state
       navigate('/home');
     } catch (err) {
@@ -56,6 +61,16 @@ function ChangePassword () {
             type="password" 
             id="newPassword" 
             value={newPassword} 
+          />
+        </div>
+        <div>
+          <label htmlFor="confirmNewPassword">Confirm New Password</label>
+          <input
+            onChange={(e) => setConfirmNewPassword(e.target.value)}
+            className="border"
+            type="password"
+            id="confirmNewPassword"
+            value={confirmNewPassword}
           />
         </div>
         <button type="submit" disabled={isLoading} className="border">
