@@ -39,8 +39,8 @@ function Login () {
     <div className='bg-page-color'>
     <div className='relative h-1/4 sm: h-64 md:h-72 lg: h-96'>
       <div className='absolute top-1/2 left-5 text-white'>
-        <h1 className='text-5xl  font-bold'>Register</h1>
-        <p>Create your account</p>
+        <h1 className='text-5xl  font-bold'>Welcome Back</h1>
+        <p>Sign in into your account</p>
       </div>
       
       <img src={imageURL} alt='header-background' className='w-full h-full'/>
