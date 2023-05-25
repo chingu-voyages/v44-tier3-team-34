@@ -3,8 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'; 
 import { useSignupMutation } from '../slices/usersApiSlice'; 
 import { setCredentials } from '../slices/authSlice'; // will set credentials after successful login
+import { imageURL } from '../utilities/constants';
 
 function Signup () {
+  /* eslint-disable no-unused-vars */
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -40,61 +42,59 @@ function Signup () {
   };
 
   return (
-    <>
-      <h1>Signup Page</h1>
-      <form onSubmit={submitHandler} className="w-80 m-auto">
-        <div>
-          <label htmlFor="name">Name</label>
+    <div className='bg-page-color'>
+    <div className='relative h-1/4 sm: h-64 md:h-72 lg: h-96'>
+      <div className='absolute top-1/2 left-5 text-white'>
+        <h1 className='text-5xl  font-bold'>Register</h1>
+        <p>Create your account</p>
+      </div>
+      
+      <img src={imageURL} alt='header-background' className='w-full h-full'/>
+    </div>
+      
+      <form onSubmit={submitHandler} className="w-80 m-auto flex justify-center flex-col gap-y-4 my-9">
           <input 
             onChange={(e) => setName(e.target.value)}
-            className="border" 
+            className="border rounded py-1.5 pl-1.5 border-light-blue text-dark-blue text-lg" 
             type="name" 
             id="name" 
             value={name} 
-            placeholder="enter name"  
+            placeholder="Name"  
             required
           />
-        </div>
-        <div>
-          <label htmlFor="email">Email</label>
           <input 
             onChange={(e) => setEmail(e.target.value)}
-            className="border" 
+            className="border rounded py-1.5 pl-1.5 border-light-blue text-dark-blue text-lg" 
             type="email" 
             id="email" 
             value={email} 
-            placeholder="enter email"  
+            placeholder="Email"  
             required
           />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
           <input 
             onChange={(e) => setPassword(e.target.value)} 
-            className="border" 
+            className="border rounded py-1.5 pl-1.5 border-light-blue text-dark-blue text-lg"  
             type="password" 
             id="password" 
             value={password} 
+            placeholder="Password"  
             required
           />
-        </div>
-        <div>
-          <label htmlFor="confirmPassword">Confirm Password</label>
           <input 
             onChange={(e) => setConfirmPassword(e.target.value)} 
-            className="border" 
+            className="border rounded py-1.5 pl-1.5 border-light-blue text-dark-blue text-lg" 
             type="password" 
             id="confirmPassword" 
             value={confirmPassword} 
+            placeholder="Confirm password"  
             required
           />
-        </div>
-        <button type="submit" disabled={isLoading} className="border">
+        <button type="submit" disabled={isLoading} className="border rounded py-1.5 pl-1.5 border-light-green bg-light-green text-dark-blue text-lg" >
           {isLoading ? 'Loading...' : 'Signup'}   
         </button>
       </form>  
-      <p>Go to Login - <Link className="underline" to="/login">Login</Link></p> 
-    </>
+      <p className='flex justify-center pb-3'>Go to Login - <Link className="underline text-green ml-1" to="/login">Login</Link></p> 
+    </div>
   )
 }
 

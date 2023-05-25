@@ -1,11 +1,12 @@
 import {useState, useEffect} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'; // to dispatch actions and select data from the store
 import { useChangePasswordMutation } from '../slices/usersApiSlice'; 
 import { setCredentials } from '../slices/authSlice'; // will set credentials after successful change of password
 import Navbar from '../components/Navbar';
 
 function ChangePassword () {
+  /* eslint-disable no-unused-vars */
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');

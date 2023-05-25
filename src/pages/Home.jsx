@@ -1,9 +1,13 @@
 import { useEffect } from 'react'; 
-import { useSelector } from 'react-redux'; // to dispatch actions and select data from the store
+import { useSelector, useDispatch } from 'react-redux'; // to dispatch actions and select data from the store
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 function Home() {
+  /* eslint-disable no-unused-vars */
+  /* eslint-disable no-undef */
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => state.auth);

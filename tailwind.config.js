@@ -1,4 +1,6 @@
-const plugin = require('tailwindcss/plugin')
+const plugin = require('tailwindcss/plugin') // eslint-disable-line no-undef
+
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -8,6 +10,7 @@ export default {
   theme: {
     colors: {
       'green': '#1EB88D',
+      'page-color': '#ebe8e8',
       'light-green': '#C0E862',
       'light-blue': '#2F4858',
       'dark-blue': '#0D1C2E',
