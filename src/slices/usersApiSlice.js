@@ -3,9 +3,6 @@ import { apiSlice } from "./apiSlice";  /* eslint-disable no-unused-vars */
 
 const USERS_URL = "/api/auth";
 
-const token = localStorage.getItem("userToken");
-
-
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({

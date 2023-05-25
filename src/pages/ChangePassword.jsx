@@ -31,7 +31,6 @@ function ChangePassword () {
     }
     try {
       const res = await changePassword({ password, newPassword }).unwrap(); // unwrap() will return the actual data from the promise
-      console.log({ res })
       dispatch(setCredentials({ ...res })); // set to localstorage and state
       navigate('/home');
     } catch (err) {
@@ -45,7 +44,7 @@ function ChangePassword () {
       <h1>Change Password Page</h1>
       <form onSubmit={submitHandler} className="w-80 m-auto">
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Current Password</label>
           <input 
             onChange={(e) => setPassword(e.target.value)} 
             className="border" 
@@ -82,4 +81,4 @@ function ChangePassword () {
   )
 }
 
-  export default ChangePassword 
+  export default ChangePassword
