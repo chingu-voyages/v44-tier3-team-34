@@ -10,11 +10,12 @@ function ChangePassword () {
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const [error, setError] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [changePassword, { isLoading, isError }] = useChangePasswordMutation();
+  const [changePassword, { isLoading }] = useChangePasswordMutation();
 
   const { userToken } = useSelector((state) => state.auth);
 
@@ -26,16 +27,19 @@ function ChangePassword () {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setError('');
     if (newPassword !== confirmNewPassword) {
       return console.log("Passwords don't match");
+    } else {  
+      try {
+        const res = await changePassword({ password, newPassword }).unwrap(); // unwrap() will return the actual data from the promise
+        dispatch(setCredentials({ ...res })); // set to localstorage and state
+        navigate('/home');
+      } catch (err) {
+        setError(err?.data?.error || "there was a problem Changing password");
+      }
     }
-    try {
-      const res = await changePassword({ password, newPassword }).unwrap(); // unwrap() will return the actual data from the promise
-      dispatch(setCredentials({ ...res })); // set to localstorage and state
-      navigate('/home');
-    } catch (err) {
-      console.log(err?.data?.error || "there was a problem Changing password");
-    }
+    
   };
 
   return (
@@ -74,8 +78,9 @@ function ChangePassword () {
           />
         </div>
         <button type="submit" disabled={isLoading} className="border">
-          {isLoading ? 'Loading...' : 'Change Password'}   
+          {isLoading ? "Loading..." : "Change Password"}   
         </button>
+        {error && <p className="text-red-500">{error}</p>}
       </form>  
     </>
   )

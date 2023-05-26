@@ -11,11 +11,12 @@ function Signup () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [signup, { isLoading, isError }] = useSignupMutation();
+  const [signup, { isLoading }] = useSignupMutation();
 
   const { userToken } = useSelector((state) => state.auth);
 
@@ -27,16 +28,16 @@ function Signup () {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setError('');
     if (password !== confirmPassword) {
-      console.log('Passwords do not match');
+      setError('Passwords do not match');
     } else {
       try {
         const res = await signup({ name, email, password }).unwrap(); // unwrap() will return the actual data from the promise
         dispatch(setCredentials({ ...res })); // set to localstorage and state
         navigate('/home');
       } catch (err) {
-        console.log({err})
-        console.log(err?.data?.error || "there was a problem signing up");
+        setError(err?.data?.error || "there was a problem signing up");
       }
     }
   };
@@ -92,6 +93,7 @@ function Signup () {
         <button type="submit" disabled={isLoading} className="border rounded py-1.5 pl-1.5 border-light-green bg-light-green text-dark-blue text-lg" >
           {isLoading ? 'Loading...' : 'Signup'}   
         </button>
+        {error && <p className="text-red-500">{error}</p>}
       </form>  
       <p className='flex justify-center pb-3'>Go to Login - <Link className="underline text-green ml-1" to="/login">Login</Link></p> 
     </div>

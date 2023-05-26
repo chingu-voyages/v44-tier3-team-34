@@ -8,25 +8,25 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    colors: {
-      'green': '#1EB88D',
-      'page-color': '#ebe8e8',
-      'light-green': '#C0E862',
-      'light-blue': '#2F4858',
-      'dark-blue': '#0D1C2E',
-      'white': '#FFFFFF',
-    },
     fontFamily: {
       sans: ['Poppins', 'sans-serif'],
     },
     extend: {
+      colors: {
+        'green': '#1EB88D',
+        'page-color': '#ebe8e8',
+        'light-green': '#C0E862',
+        'light-blue': '#2F4858',
+        'dark-blue': '#0D1C2E',
+        'white': '#FFFFFF',
+      },
       backgroundImage: {
         'hero': "url('./src/assets/pet-hero.jpg')",
       },
       textShadow: {
-        sm: '0 1px 2px var(--tw-shadow-color)',
-        DEFAULT: '2px 2px 4px rgba(0,0,0,0.5)',
-        lg: '0 8px 16px var(--tw-shadow-color)',
+        sm: '1px 1px 6px black',
+        DEFAULT: '2px 2px 4px black',
+        lg: '0 8px 16px black',
       },
     },
   },

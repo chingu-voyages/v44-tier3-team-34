@@ -10,11 +10,12 @@ function Login () {
   /* eslint-disable no-unused-vars */
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [login, { isLoading, isError }] = useLoginMutation();
+  const [login, { isLoading }] = useLoginMutation();
 
   const { userToken } = useSelector((state) => state.auth);
 
@@ -26,12 +27,13 @@ function Login () {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setError('');
     try {
       const res = await login({ email, password }).unwrap(); // unwrap() will return the actual data from the promise
       dispatch(setCredentials({ ...res })); // set to localstorage and state
       navigate('/home');
     } catch (err) {
-      console.log(err?.data?.error || "there was a problem logging in");
+      setError(err?.data?.error || "there was a problem logging in");
     }
   };
 
@@ -67,6 +69,7 @@ function Login () {
         <button type="submit" disabled={isLoading} className="border rounded py-1.5 pl-1.5 border-light-green bg-light-green text-dark-blue text-lg">
           {isLoading ? 'Loading...' : 'Login'}   
         </button>
+        {error && <p className="text-red-500">{error}</p>}
       </form>  
       <p className='flex justify-center my-1.5'>Go to Sign up - <Link className="underline text-green ml-1" to="/signup">Signup</Link></p> 
       <Header/>
