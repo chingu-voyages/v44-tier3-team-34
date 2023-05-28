@@ -1,5 +1,5 @@
 import { logo } from "../utilities/constants";
-import { AiFillHome, BsFillPersonPlusFill, BsChatDots, MdNotificationsActive, FaShoppingBag, AiOutlineSearch, IoSettingsSharp } from 'react-icons/all'
+import { AiFillHome, BsFillPersonPlusFill, BsPersonCircle, BsChatDots, MdNotificationsActive, FaShoppingBag, AiOutlineSearch, IoSettingsSharp } from 'react-icons/all'
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -7,8 +7,8 @@ const Header = () => {
         <header>
             <nav>
                 <div className="flex justify-between justify-items-center items-center px-2">
-                    <div>
-                        <img src={logo} alt="logo" />
+                    <div><Link to="/"><img src={logo} alt="logo" /></Link>
+                        
                     </div>
                     <ul className="text-1xl">
                         <li className="bg-light-green p-1 rounded-full"><AiOutlineSearch/></li>
@@ -21,7 +21,7 @@ const Header = () => {
                         <li><Link to='/'><BsFillPersonPlusFill/></Link></li>
                         <li><Link to='/'><BsChatDots/></Link></li>
                         <li><Link to='/'><MdNotificationsActive/></Link></li>
-                        <li><Link to='/'><FaShoppingBag/></Link></li>
+                        <li><Link to='/profile'><BsPersonCircle/></Link></li>
                     </ul>
                 </div>
             </nav>
