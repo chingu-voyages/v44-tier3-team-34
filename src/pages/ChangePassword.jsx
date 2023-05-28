@@ -52,6 +52,7 @@ function ChangePassword () {
           id="password" 
           value={password} 
           placeholder="Current Password"
+          required
         />
         <input 
           onChange={(e) => setNewPassword(e.target.value)} 
@@ -60,6 +61,7 @@ function ChangePassword () {
           id="newPassword" 
           value={newPassword} 
           placeholder="New Password"
+          required
         />
         <input
           onChange={(e) => setConfirmNewPassword(e.target.value)}
@@ -68,6 +70,7 @@ function ChangePassword () {
           id="confirmNewPassword"
           value={confirmNewPassword}
           placeholder="Confirm New Password"
+          required
         />
         <button type="submit" disabled={isLoading} className="border rounded py-1.5 pl-1.5 border-light-green bg-light-green text-dark-blue text-lg">
           {isLoading ? "Loading..." : "Change Password"}   

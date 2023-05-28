@@ -48,6 +48,7 @@ function Login () {
           id="email" 
           value={email} 
           placeholder="Email"  
+          required
         />
 
         <input 
@@ -57,6 +58,7 @@ function Login () {
           id="password" 
           placeholder="Password"  
           value={password} 
+          required
         />
         <button type="submit" disabled={isLoading} className="border rounded py-1.5 pl-1.5 border-light-green bg-light-green text-dark-blue text-lg">
           {isLoading ? 'Loading...' : 'Login'}   
