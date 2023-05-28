@@ -6,7 +6,6 @@ import { useChangePasswordMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice'; // will set credentials after successful change of password
 
 function ChangePassword () {
-  /* eslint-disable no-unused-vars */
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');

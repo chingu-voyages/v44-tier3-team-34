@@ -6,7 +6,6 @@ import Posts from '../components/Posts';
 
 function Home() {
   /* eslint-disable no-unused-vars */
-  /* eslint-disable no-undef */
   const dispatch = useDispatch();
 
   const navigate = useNavigate();

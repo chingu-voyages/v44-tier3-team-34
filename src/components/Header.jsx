@@ -1,5 +1,5 @@
 import { logo } from "../utilities/constants";
-import { AiFillHome, BsFillPersonPlusFill, BsPersonCircle, BsChatDots, MdNotificationsActive, FaShoppingBag, AiOutlineSearch, IoSettingsSharp } from 'react-icons/all'
+import { AiFillHome, BsFillPersonPlusFill, BsPersonCircle, BsChatDots, MdNotificationsActive, AiOutlineSearch, IoSettingsSharp } from 'react-icons/all'
 import { Link } from "react-router-dom";
 
 const Header = () => {

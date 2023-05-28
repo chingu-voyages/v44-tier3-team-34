@@ -1,4 +1,5 @@
 import { imageURL } from '../utilities/constants';
+import PropTypes from 'prop-types'
 
 function AuthHero({ title, children }) {
   return (
@@ -11,5 +12,10 @@ function AuthHero({ title, children }) {
   </div>
   );
 }
+
+AuthHero.propTypes = {
+    title: PropTypes.string.isRequired,
+    children: PropTypes.element,
+  };
 
 export default AuthHero;

@@ -18,7 +18,7 @@ function Profile() {
     <>
       <Header />
       <div className="p-4">
-        <div>{user.name}'s Profile</div>
+        <div>{user.name}&apos;s Profile</div>
         <div>Email: {user.email}</div>
         <Link className="border p-1 bg-light-green" to="/changepassword">ChangePassword</Link>
         <button className="block border my-4" onClick={handleLogout}>Logout</button>

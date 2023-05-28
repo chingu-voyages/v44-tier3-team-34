@@ -6,7 +6,6 @@ import { useSignupMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice'; // will set credentials after successful login
 
 function Signup () {
-  /* eslint-disable no-unused-vars */
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
