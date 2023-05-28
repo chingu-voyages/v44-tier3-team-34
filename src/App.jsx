@@ -8,7 +8,6 @@ import Profile from './pages/Profile';
 
 function App() {
   return (
-    <>
       <Router>
           <Routes>
             <Route index element={<Landing />} />
@@ -19,7 +18,6 @@ function App() {
             <Route path='/Profile' element={<Profile />} />
           </Routes>
       </Router>
-    </>
   )
 }
 

@@ -9,8 +9,8 @@ export const posts = [
         time: '12m',
         description: '1Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when... See more',
         postPhoto: 'https://i.ibb.co/c2YPbv1/images.jpg',
-        likes: '123k',
-        comments: '30k'
+        likes: 123,
+        comments: 30
     },
     {
         id: 2,
@@ -19,8 +19,8 @@ export const posts = [
         time: '30m',
         description: '2Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when... See more',
         postPhoto: 'https://i.ibb.co/VwzM25V/download-3.jpg',
-        likes: '123k',
-        comments: '30k'
+        likes: 123,
+        comments: 30
     },
     {
         id: 3,
@@ -29,8 +29,8 @@ export const posts = [
         time: '2h',
         description: '3Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when... See more',
         postPhoto: 'https://i.ibb.co/wzGk7gT/download-2.jpg',
-        likes: '123k',
-        comments: '30k'
+        likes: 123,
+        comments: 30
     },
     {
         id: 4,
@@ -39,8 +39,8 @@ export const posts = [
         time: '1d',
         description: '4Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when... See more',
         postPhoto: 'https://i.ibb.co/1mV1Z7G/download-1.jpg',
-        likes: '123k',
-        comments: '30k'
+        likes: 123,
+        comments: 30
     },
     {
         id: 5,
@@ -49,7 +49,7 @@ export const posts = [
         time: '5d',
         description: '5Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when... See more',
         postPhoto: 'https://i.ibb.co/Lvy09yL/download.jpg',
-        likes: '123k',
-        comments: '30k'
+        likes: 123,
+        comments: 30
     },
 ]

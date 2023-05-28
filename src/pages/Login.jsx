@@ -1,10 +1,9 @@
 import {useState, useEffect} from 'react';
+import AuthHero from '../components/AuthHero';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'; // to dispatch actions and select data from the store
 import { useLoginMutation } from '../slices/usersApiSlice'; 
 import { setCredentials } from '../slices/authSlice'; // will set credentials after successful login
-import { imageURL } from '../utilities/constants';
-import Header from '../components/Header';
 
 function Login () {
   /* eslint-disable no-unused-vars */
@@ -38,41 +37,34 @@ function Login () {
   };
 
   return (
-    <div className='bg-page-color'>
-    <div className='relative h-1/4 sm: h-64 md:h-72 lg: h-96'>
-      <div className='absolute top-1/2 left-5 text-white'>
-        <h1 className='text-5xl  font-bold'>Welcome Back</h1>
+    <div className='bg-page-color min-h-screen pb-8'>
+      <AuthHero title="Welcome Back" >
         <p>Sign in into your account</p>
-      </div>
-      
-      <img src={imageURL} alt='header-background' className='w-full h-full'/>
-    </div>
-      
+      </AuthHero>
       <form onSubmit={submitHandler} className="w-80 m-auto flex justify-center flex-col gap-y-4 my-9">
-          <input 
-            onChange={(e) => setEmail(e.target.value)}
-            className="border rounded py-1.5 pl-1.5 border-light-blue text-dark-blue text-lg"  
-            type="email" 
-            id="email" 
-            value={email} 
-            placeholder="Email"  
-          />
+        <input 
+          onChange={(e) => setEmail(e.target.value)}
+          className="border rounded py-1.5 pl-1.5 border-light-blue text-dark-blue text-lg"  
+          type="email" 
+          id="email" 
+          value={email} 
+          placeholder="Email"  
+        />
 
-          <input 
-            onChange={(e) => setPassword(e.target.value)} 
-            className="border rounded py-1.5 pl-1.5 border-light-blue text-dark-blue text-lg" 
-            type="password" 
-            id="password" 
-            placeholder="Password"  
-            value={password} 
-          />
+        <input 
+          onChange={(e) => setPassword(e.target.value)} 
+          className="border rounded py-1.5 pl-1.5 border-light-blue text-dark-blue text-lg" 
+          type="password" 
+          id="password" 
+          placeholder="Password"  
+          value={password} 
+        />
         <button type="submit" disabled={isLoading} className="border rounded py-1.5 pl-1.5 border-light-green bg-light-green text-dark-blue text-lg">
           {isLoading ? 'Loading...' : 'Login'}   
         </button>
         {error && <p className="text-red-500">{error}</p>}
       </form>  
       <p className='flex justify-center my-1.5'>Go to Sign up - <Link className="underline text-green ml-1" to="/signup">Signup</Link></p> 
-      <Header/>
     </div>
   )
 }
