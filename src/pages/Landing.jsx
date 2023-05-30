@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
+
 function Landing() {
   return (
-    <>
+    <div className='bg-page-color'>
       <section className="flex items-center justify-center relative bg-light-green bg-hero bg-cover bg-center h-[331px] md:h-[400px]">
         <div className="absolute top-16 bg-opacity-75 bg-light-blue w-full max-w-[90%] rounded mx-8 p-4 text-center md:top-[425px] md:max-w-xl md:flex md:items-center md:justify-around">
           <h1 className="text-5xl md:text-7xl text-light-green font-medium text-shadow">PetPals</h1>
@@ -18,8 +20,9 @@ function Landing() {
       </section>
       <div className="w-full text-center">
       <a href="/signup" className="rounded uppercase font-medium text-xl inline-block mb-4 py-4 px-8 w-96 max-w-[90%] bg-light-green hover:opacity-50">Get Started</a>
+      <p className="text-lg text-dark-blue max-w-2xl pb-8 mx-auto"> Already have an account? <Link to="/login" className="text-light-green hover:underline">Login</Link></p>
       </div>
-    </>
+    </div>
   );
 }
 
