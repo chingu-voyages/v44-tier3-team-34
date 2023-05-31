@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ChangePassword from './pages/ChangePassword';
 import Profile from './pages/Profile';
+import MakePost from './pages/MakePost';
 
 function App() {
   return (
@@ -12,10 +13,11 @@ function App() {
           <Routes>
             <Route index element={<Landing />} />
             <Route path='/home' element={<Home />} />
-            <Route path='/Login' element={<Login />} />
-            <Route path='/Signup' element={<Signup />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
             <Route path='/changepassword' element={<ChangePassword />} />
-            <Route path='/Profile' element={<Profile />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/makepost' element={<MakePost />} />
           </Routes>
       </Router>
   )

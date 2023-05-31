@@ -5,6 +5,6 @@ const baseQuery = fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL });
 
 export const apiSlice = createApi({
   baseQuery,
-  tagTypes: ['User'],
+  tagTypes: ['User', 'Post'],
   endpoints: () => ({}),
 });

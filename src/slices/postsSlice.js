@@ -11,6 +11,7 @@ const postsSlice = createSlice({
   initialState,
   reducers: {
     setPosts: (state, action) => {
+      console.log("payload: ", action.payload);
       state.posts = action.payload;
     },
     clearPosts: (state) => {
