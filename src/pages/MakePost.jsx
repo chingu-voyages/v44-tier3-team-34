@@ -16,13 +16,13 @@ function MakePost() {
     const { userToken } = useSelector((state) => state.auth);
 
     const [createPost, { isLoading }] = useCreatePostMutation();
+    const { data: posts, error: fetchError, isLoading: isPostsLoading } = useGetAllPostsQuery();
 
     const submitHandler = async (e) => {
         e.preventDefault();
         console.log({ title, text, category })
         try {
           const res = await createPost({ title, text, category }).unwrap(); // unwrap() will return the actual data from the promise
-          const { data: posts, error: fetchError, isLoading: isPostsLoading } = useGetAllPostsQuery();
           console.log({ posts, fetchError, isPostsLoading })
           // dispatch(setPosts({ ...res })); 
           // const posts = await getAllPosts().unwrap();
