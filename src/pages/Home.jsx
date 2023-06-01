@@ -1,5 +1,5 @@
 import { useEffect } from 'react'; 
-import { useSelector, useDispatch } from 'react-redux'; // to dispatch actions and select data from the store
+import { useSelector } from 'react-redux'; // to dispatch actions and select data from the store
 import { useGetAllPostsQuery } from '../slices/postsApiSlice';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';

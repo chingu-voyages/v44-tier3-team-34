@@ -24,6 +24,7 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                     <li onClick={() => deletePost(_id)}><AiFillDelete/></li>
                 </ul>
             </div>
+            <h5 className="px-2 font-medium">{title}</h5>
             <p className="px-2">{text}</p>
             <div>
                 <img src="/postPhotoUrl" alt={title}/>
@@ -47,6 +48,7 @@ Post.propTypes = {
       author: PropTypes.object.isRequired,
     //   profilePhoto: PropTypes.string.isRequired,
       createdAt: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
     //   postPhoto: PropTypes.string.isRequired,
       reactions: PropTypes.array,

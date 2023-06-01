@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header'
@@ -10,7 +10,13 @@ function MakePost() {
     const [category, setCategory] = useState('');
 
     const navigate = useNavigate();
-    const { userToken } = useSelector((state) => state.auth);
+    const { user } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+      if (!user) {
+        navigate('/');
+      }
+    }, [navigate, user]);
 
     // useCreatePostMutation() returns an array with our createPost function that does a POST request, and loading and error states
     const [createPost, { isLoading, isError }] = useCreatePostMutation(); 
