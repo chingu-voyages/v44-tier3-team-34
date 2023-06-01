@@ -1,40 +1,32 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header'
-import { useCreatePostMutation, useGetAllPostsQuery } from '../slices/postsApiSlice';
-import { setPosts } from '../slices/postsSlice';
+import { useCreatePostMutation } from '../slices/postsApiSlice';
 
 function MakePost() {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [category, setCategory] = useState('');
-    const [error, setError] = useState('');
 
-    const dispatch = useDispatch();
     const navigate = useNavigate();
     const { userToken } = useSelector((state) => state.auth);
 
-    const [createPost, { isLoading }] = useCreatePostMutation();
-    const { data: posts, error: fetchError, isLoading: isPostsLoading } = useGetAllPostsQuery();
+    // useCreatePostMutation() returns an array with our createPost function that does a POST request, and loading and error states
+    const [createPost, { isLoading, isError }] = useCreatePostMutation(); 
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        console.log({ title, text, category })
         try {
-          const res = await createPost({ title, text, category }).unwrap(); // unwrap() will return the actual data from the promise
-          console.log({ posts, fetchError, isPostsLoading })
-          // dispatch(setPosts({ ...res })); 
-          // const posts = await getAllPosts().unwrap();
+          await createPost({ title, text, category }).unwrap(); // unwrap() will return the actual data from the promise
           navigate('/home');
       } catch (err) {
           console.log({err})
-          setError(err?.data?.error || "there was a problem Changing password");
       }
     }
 
     return (
-        <>
+      <div className='bg-page-color min-h-screen pb-8'>
             <Header />
             <h1>MakePost</h1>
             <form onSubmit={submitHandler} className="w-80 m-auto flex justify-center flex-col gap-y-4 my-9">  
@@ -70,8 +62,9 @@ function MakePost() {
                 <button type="submit" disabled={isLoading} className="border rounded py-1.5 pl-1.5 border-light-green bg-light-green text-dark-blue text-lg">
                   {isLoading ? 'Loading...' : 'Make Post'}   
                 </button>
+                {isError && <p className="text-red-500">Could not submit. Please try again later.</p>}
             </form>
-        </>
+        </div>
     )
 }
 
