@@ -12,6 +12,7 @@ export const postsApiSlice = apiSlice.injectEndpoints({
           Authorization: `Bearer ${localStorage.getItem("userToken")}`,
         },
       }),
+      providesTags: ["Posts"],
     }),
     getPost: builder.query({
       query: (postId) => ({
@@ -31,6 +32,7 @@ export const postsApiSlice = apiSlice.injectEndpoints({
           Authorization: `Bearer ${localStorage.getItem("userToken")}`,
         },
       }),
+      invalidatesTags: ["Posts"],
     }),
     updatePost: builder.mutation({
       query: ({ postId, postData }) => ({
@@ -41,6 +43,7 @@ export const postsApiSlice = apiSlice.injectEndpoints({
           Authorization: `Bearer ${localStorage.getItem("userToken")}`,
         },
       }),
+      invalidatesTags: ["Posts"],
     }),
     deletePost: builder.mutation({
       query: (postId) => ({
@@ -50,6 +53,7 @@ export const postsApiSlice = apiSlice.injectEndpoints({
           Authorization: `Bearer ${localStorage.getItem("userToken")}`,
         },
       }),
+      invalidatesTags: ["Posts"],
     }),
   }),
 });
