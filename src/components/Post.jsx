@@ -1,7 +1,12 @@
+import { useDeletePostMutation } from '../slices/postsApiSlice';
 import { FiEdit, AiFillDelete, AiFillLike, BiCommentDetail, FaShareSquare } from "react-icons/all";
 import PropTypes from 'prop-types'
 
 const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}) => {
+    const [deletePost, { isLoading, isError }] = useDeletePostMutation();
+    if(isError){
+        console.log("isloading", isLoading, "isError", isError)
+    }
     return(
         <div className="bg-white my-4 flex flex-col py-2">
             <div className="px-2 flex justify-between">
@@ -16,7 +21,7 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                 </div>
                 <ul className="flex gap-2">
                     <li><FiEdit/></li>
-                    <li onClick={() => console.log("ID:", _id)}><AiFillDelete/></li>
+                    <li onClick={() => deletePost(_id)}><AiFillDelete/></li>
                 </ul>
             </div>
             <p className="px-2">{text}</p>

@@ -17,6 +17,7 @@ function Home() {
 
   const navigate = useNavigate();
 
+  // get the user from the store
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {

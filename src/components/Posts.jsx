@@ -3,13 +3,14 @@ import { useGetAllPostsQuery } from '../slices/postsApiSlice';
 import Post from "./Post";
 
 const Posts = () => {
-    const {
-        data: posts,
-        isLoading,
-        isSuccess,
-        isError,
-        error
-      } = useGetAllPostsQuery()
+// the following is how we get data from the store it refetches if posts are updated
+const {
+    data: posts,
+    isLoading,
+    isSuccess,
+    isError,
+    error
+} = useGetAllPostsQuery()
 
 let content;
 
@@ -24,7 +25,7 @@ if (isLoading) {
   } else if (isError) {
     content = <div>{error}</div>
   }
-    return(
+    return (
         <div>
             <div>Posts</div>
             {content}

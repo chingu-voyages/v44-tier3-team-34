@@ -1,3 +1,9 @@
+// this file creates functions that can be used to make api calls to the backend for posts
+// they are exported as hooks and can be used in components
+// the use...Query functions are used to make GET requests
+// the use...Mutation functions are used to make POST, PUT, and DELETE requests
+// the naming convention is use[function name][request type] from Redux Toolkit
+// these functions provide loading, error, and data states to components that use them
 import { apiSlice } from "./apiSlice"; 
 
 const POSTS_URL = "/api/posts";
