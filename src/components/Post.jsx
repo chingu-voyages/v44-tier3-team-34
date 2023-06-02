@@ -4,6 +4,16 @@ import PropTypes from 'prop-types'
 
 const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}) => {
     const [deletePost, { isLoading, isError }] = useDeletePostMutation();
+    let duration;
+    const createdAtDate = new Date(createdAt);
+    const currentTime = new Date();
+    const durationInMinutes = Math.floor((currentTime - createdAtDate) / (1000 * 60));
+    if (durationInMinutes < 60) {
+      duration = `${durationInMinutes} min`;
+    } else {
+      const durationInHours = Math.floor(durationInMinutes / 60);
+      duration = `${durationInHours} hours`;
+    }
     if(isError){
         console.log("isloading", isLoading, "isError", isError)
     }
@@ -16,7 +26,7 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                     </div>
                     <ul>
                         <li>{author.name}</li>
-                        <li>{createdAt}</li>
+                        <li>{duration}</li>
                     </ul>
                 </div>
                 <ul className="flex gap-2">
