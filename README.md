@@ -175,21 +175,26 @@ You can deploy this project using:
 
 <!-- AUTHORS -->
 
-## 👥 Authors <a name="Ntihinduka Alpha"></a>
+## 👥 Authors <a name="Catherine Matson"></a>
 
-:man_technologist:  **Ntihinduka Alpha** :writing_hand: 
+:man_technologist:  **Catherine Matson** :writing_hand: 
 
-- GitHub: [githubhandle](https://github.com/AlphaNtihinduka)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/ntihinduka-alpha/) 
+- GitHub: [githubhandle](https://github.com/CCMatson)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/catherine-c-matson/) 
 
 ## 👥 Authors <a name="Ntihinduka Alpha"></a>
 
 :man_technologist:  **Greg Nicholas** :writing_hand: 
 
-- GitHub: [githubhandle](https://github.com/GregNicholas)
+- GitHub: [githubhandle](https://github.com/jamesCodes808)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/greg-schoenberg/) 
 
+## 👥 Authors <a name="Ntihinduka Alpha"></a>
 
+:man_technologist:  **James Ian** :writing_hand: 
+
+- GitHub: [githubhandle](https://github.com/GregNicholas)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/james-ian-ragasa-solima/) 
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
