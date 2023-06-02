@@ -19,9 +19,11 @@ if (isLoading) {
   } else if (isSuccess) {
     content = posts.map((post) => (
         <div key={post._id} className="border-b-4">
-            <Post post={post}/>
+            {post.author && <Post post={post} />}
         </div>
     ))
+
+    console.log("content",content)
   } else if (isError) {
     content = <div>{error}</div>
   }
