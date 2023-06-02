@@ -19,7 +19,7 @@ const Header = () => {
                     <ul className="flex justify-between px-2 text-2xl my-2">
                         <li><Link to='/home'><AiFillHome/></Link></li>
                         <li><Link to='/'><BsFillPersonPlusFill/></Link></li>
-                        <li><Link to='/'><BsChatDots/></Link></li>
+                        <li><Link to='/makepost'><BsChatDots/></Link></li>
                         <li><Link to='/'><MdNotificationsActive/></Link></li>
                         <li><Link to='/profile'><BsPersonCircle/></Link></li>
                     </ul>
