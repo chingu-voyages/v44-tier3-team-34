@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import jwt_decode from 'jwt-decode'
 
+//check if token is expired, if so remove it
+if(localStorage.getItem('userToken') && jwt_decode(localStorage.getItem('userToken')).exp < Date.now() / 1000) localStorage.removeItem('userToken');
+
 const initialState = {
   userToken: localStorage.getItem('userToken') ? localStorage.getItem('userToken') : null,
   user: localStorage.getItem('userToken') ? jwt_decode(localStorage.getItem('userToken')).user : null
