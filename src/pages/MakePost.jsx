@@ -1,22 +1,28 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import validateToken from '../utilities/validateToken';
+import { logout } from '../slices/authSlice';
 import Header from '../components/Header'
 import { useCreatePostMutation } from '../slices/postsApiSlice';
 
 function MakePost() {
+    const isTokenCurrent = validateToken();
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [category, setCategory] = useState('');
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const { user } = useSelector((state) => state.auth);
 
     useEffect(() => {
-      if (!user) {
+      if (!user || !isTokenCurrent) {
+        dispatch(logout());
         navigate('/');
       }
-    }, [navigate, user]);
+    }, [navigate, dispatch, user, isTokenCurrent]);
 
     // useCreatePostMutation() returns an array with our createPost function that does a POST request, and loading and error states
     const [createPost, { isLoading, isError }] = useCreatePostMutation(); 
