@@ -22,16 +22,17 @@ if (isLoading) {
             {post.author && <Post post={post} />}
         </div>
     ))
-
-    console.log("content",content)
   } else if (isError) {
-    content = <div>{error}</div>
+    if (error.data?.err === 'jwt expired') {
+      content = <div className="text-red-500 text-center p-4">Login token expired. Please login again.</div>
+    } else {
+      content = <div className="text-red-500 text-center p-4">Error fetching posts. Please try again later</div>
+    }
   }
     return (
-        <div>
-            <div>Posts</div>
-            {content}
-        </div>
+      <>
+        {content}
+      </>
     )
 }
 
