@@ -2,19 +2,23 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import validateToken from '../utilities/validateToken';
 import Header from '../components/Header';
 import { logout } from '../slices/authSlice';
 
 function Profile() {
-  const { user } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+  const isTokenCurrent = validateToken();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    if (!user) {
+    if (!user || !isTokenCurrent) {
+      dispatch(logout());
       navigate('/');
     }
-  }, [navigate, user]);
+  }, [navigate, dispatch, user, isTokenCurrent]);
 
   const handleLogout = () => {
     dispatch(logout());
