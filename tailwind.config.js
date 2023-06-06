@@ -21,7 +21,7 @@ export default {
         'white': '#FFFFFF',
       },
       backgroundImage: {
-        'hero': "url('./src/assets/pet-hero.jpg')",
+        'hero': "url('/src/assets/pet-hero.avif')",
       },
       textShadow: {
         sm: '1px 1px 6px black',
