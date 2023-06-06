@@ -18,7 +18,7 @@ if (isLoading) {
     content = <div>Loading...</div>
   } else if (isSuccess) {
     content = posts.map((post) => (
-        <div key={post._id} className="border-b-4">
+        <div key={post._id} className="">
             {post.author && <Post post={post} />}
         </div>
     ))

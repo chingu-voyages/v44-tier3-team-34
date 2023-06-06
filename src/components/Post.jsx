@@ -2,6 +2,7 @@ import { useDeletePostMutation } from '../slices/postsApiSlice';
 import { FiEdit, AiFillDelete, AiFillLike, BiCommentDetail, FaShareSquare } from "react-icons/all";
 import PropTypes from 'prop-types'
 
+
 const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}) => {
     const [deletePost, { isLoading, isError }] = useDeletePostMutation();
     let duration;
@@ -18,15 +19,19 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
         console.log("isloading", isLoading, "isError", isError)
     }
     return(
-        <div className="bg-white my-4 flex flex-col py-2">
+        <div className="bg-white my-4 flex flex-col py-2 shadow-md border-t m-6 rounded-md">
             <div className="px-2 flex justify-between">
                 <div className="flex gap-2">
                     <div className="rounded-full">
-                        <img src="/profilePhotoUrl" alt={author.name} className="rounded-full h-14 w-14 object-cover"/>
+                        <img src="src/assets/placeholder.png" alt={author.name} className="rounded-full h-14 w-14 object-cover"/>
                     </div>
                     <ul>
                         <li>{author.name}</li>
-                        <li>{duration}</li>
+                        {durationInMinutes > 0 ? 
+                        <li>Post created: {duration} ago</li>
+                        : 
+                        <li>Just Posted</li> 
+                        }
                     </ul>
                 </div>
                 <ul className="flex gap-2">
@@ -34,10 +39,10 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                     <li onClick={() => deletePost(_id)}><AiFillDelete/></li>
                 </ul>
             </div>
-            <h5 className="px-2 font-medium">{title}</h5>
-            <p className="px-2">{text}</p>
-            <div>
-                <img src="/postPhotoUrl" alt={title}/>
+            <h5 className="px-2 font-medium text-center">{title}</h5>
+            <p className="px-2 text-center">{text}</p>
+            <div className='flex justify-center'>
+                <img className='h-60 w-60' src="src/assets/dogplaceholder.jpg" alt={title}/>
             </div>
             <div className="flex justify-between px-2" >
                 <div>{reactions.length}<span>Likes</span></div>
