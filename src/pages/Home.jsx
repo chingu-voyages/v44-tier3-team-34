@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { logout } from '../slices/authSlice';
 import Header from '../components/Header';
 import Posts from '../components/Posts';
+import Footer from '../components/Footer';
 
 function Home() {
   const isTokenCurrent = validateToken();
@@ -25,8 +26,9 @@ function Home() {
   return (
     <>
       <Header/>
-      <div className="w-2/3 m-auto pt-8 text-3xl font-medium">{user ? `Welcome ${user.name}` : 'Not logged in'}!</div>
+      <div className="w-2/3 m-auto pt-8 text-3xl font-medium text-center">{user ? `Welcome ${user.name}` : 'Not logged in'}!</div>
       {user && <Posts/>}
+      <Footer/>
     </>
   )
 }
