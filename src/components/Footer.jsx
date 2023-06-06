@@ -1,6 +1,3 @@
-import { logo } from "../utilities/constants";
-import { Link } from "react-router-dom";
-
 
 const Footer = () => {
     return(
