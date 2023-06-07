@@ -17,14 +17,11 @@ let content;
 if (isLoading) {
     content = <div>Loading...</div>
   } else if (isSuccess) {
-    content = posts.map((post) => {
-      console.log({post})
-      return (
+    content = posts.map((post) => (
         <div key={post._id} className="">
             {post.author && <Post post={post} />}
         </div>
-      )}
-    )
+    ))
   } else if (isError) {
     if (error.data?.err === 'jwt expired') {
       content = <div className="text-red-500 text-center p-4">Login token expired. Please login again.</div>
