@@ -61,6 +61,27 @@ export const postsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Posts"],
     }),
+    addComment: builder.mutation({
+      query: ({ postId, commentData }) => ({
+        url: `${POSTS_URL}/${postId}/comments`,
+        method: "POST",
+        body: commentData,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+        },
+      }),
+      invalidatesTags: ["Posts"],
+    }),
+    deleteComment: builder.mutation({
+      query: ({ postId, commentId }) => ({
+        url: `${POSTS_URL}/${postId}/comments/${commentId}`,
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+        },
+      }),
+      invalidatesTags: ["Posts"],
+    }),
   }),
 });
 
