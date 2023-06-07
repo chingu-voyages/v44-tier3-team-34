@@ -1,10 +1,15 @@
+import { useState } from 'react';
 import { useDeletePostMutation } from '../slices/postsApiSlice';
 import { FiEdit, AiFillDelete, AiFillLike, BiCommentDetail, FaShareSquare } from "react-icons/all";
 import PropTypes from 'prop-types'
-
+import CommentForm from './CommentForm';
+import Comment from './Comment';
 
 const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}) => {
     const [deletePost, { isLoading, isError }] = useDeletePostMutation();
+    const [showCommentForm, setShowCommentForm] = useState(false);
+    const [showComments, setShowComments] = useState(false);
+
     let duration;
     const createdAtDate = new Date(createdAt);
     const currentTime = new Date();
@@ -50,9 +55,18 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
             </div>
             <ul className="flex justify-between px-2">
                 <li><AiFillLike/></li>
-                <li><BiCommentDetail/></li>
+                <li onClick={() => setShowCommentForm(true)}><BiCommentDetail/></li>
                 <li><FaShareSquare/></li>
             </ul>
+            {showCommentForm && <CommentForm postId={_id} />}
+            <div className="flex justify-center">
+                <button onClick={() => setShowComments(!showComments)} className="bg-light-green text-white rounded py-1.5 px-1.5">{showComments ? "Hide" : "Show"} Comments</button>
+            </div>
+            {showComments && comments.map((comment) => (
+                <div key={comment._id} className="">
+                    <Comment comment={comment} />
+                </div>
+            ))}
         </div>
     )
 }
