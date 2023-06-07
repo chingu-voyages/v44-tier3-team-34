@@ -1,13 +1,19 @@
 import { useGetProfileQuery } from "../slices/profilesApiSlice";
+import { useDeleteCommentMutation } from "../slices/postsApiSlice";
+import { useSelector } from "react-redux";
 import timeSinceDate from "../utilities/timeSinceDate";
 import { FiEdit, AiFillDelete } from "react-icons/all";
 
 
-const Comment = ({ comment }) => { 
+const Comment = ({ comment, postId }) => { 
   // get the comment's author's name
   const { data: profile } = useGetProfileQuery(comment.author);
+  const { user } = useSelector((state) => state.auth);
+  const isCommentAuthor = user.profile === comment.author;
 
   const { durationInMinutes, duration } = timeSinceDate(comment.createdAt);
+
+  const [deleteComment] = useDeleteCommentMutation();
 
   return (
     <div className="p-2 mx-4 border-t-2 border-light-green bg-[#FAF9F6]">
@@ -23,14 +29,15 @@ const Comment = ({ comment }) => {
               </span>
             </div>
         </div>
-        <ul className="flex gap-2">
+        {isCommentAuthor && <ul className="flex gap-2">
             <li><FiEdit/></li>
             <li>
               <AiFillDelete 
                 className="cursor-pointer hover:text-red-500"
+                onClick={() => deleteComment({postId, commentId: comment._id})}
               />
             </li>
-        </ul>
+        </ul>}
       </div>
       <p>{comment.text}</p>
     </div>

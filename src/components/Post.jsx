@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useDeletePostMutation } from '../slices/postsApiSlice';
 import { FiEdit, AiFillDelete, AiFillLike, BiCommentDetail, FaShareSquare } from "react-icons/all";
 import PropTypes from 'prop-types'
@@ -10,6 +11,9 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
     const [deletePost, { isLoading, isError }] = useDeletePostMutation();
     const [showCommentForm, setShowCommentForm] = useState(false);
     const [showComments, setShowComments] = useState(false);
+
+    const { user } = useSelector((state) => state.auth);
+    const isPostAuthor = user.profile === author._id;
 
     const {durationInMinutes, duration} = timeSinceDate(createdAt);
 
@@ -32,10 +36,15 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                         }
                     </ul>
                 </div>
-                <ul className="flex gap-2">
+                {isPostAuthor && <ul className="flex gap-2">
                     <li><FiEdit/></li>
-                    <li onClick={() => deletePost(_id)}><AiFillDelete/></li>
-                </ul>
+                    <li>
+                        <AiFillDelete
+                            className="cursor-pointer hover:text-red-500"
+                            onClick={() => deletePost(_id)}
+                        />
+                    </li>
+                </ul>}
             </div>
             <h5 className="px-2 font-medium text-center">{title}</h5>
             <p className="px-2 text-center">{text}</p>
@@ -67,7 +76,7 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                 />}
             {showComments && comments.map((comment) => (
                 <div key={comment._id} className="">
-                    <Comment comment={comment} />
+                    <Comment comment={comment} postId={_id} />
                 </div>
             ))}
         </div>
