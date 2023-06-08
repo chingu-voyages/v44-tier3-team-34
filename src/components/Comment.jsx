@@ -4,9 +4,9 @@ import timeSinceDate from "../utilities/timeSinceDate";
 import { FiEdit, AiFillDelete } from "react-icons/all";
 import PropTypes from 'prop-types';
 
-const Comment = ({ comment, postId }) => { 
+const Comment = ({ comment, postId, isPostAuthor }) => { 
   const { user } = useSelector((state) => state.auth);
-  const isCommentAuthor = user.profile === comment.author._id;
+  const hasDeleteAuthority = user.profile === comment.author._id || isPostAuthor;
 
   const { durationInMinutes, duration } = timeSinceDate(comment.createdAt);
 
@@ -26,7 +26,7 @@ const Comment = ({ comment, postId }) => {
               </span>
             </div>
         </div>
-        {isCommentAuthor && <ul className="flex gap-2">
+        {hasDeleteAuthority && <ul className="flex gap-2">
             <li><FiEdit/></li>
             <li>
               <AiFillDelete 
@@ -44,6 +44,7 @@ const Comment = ({ comment, postId }) => {
 Comment.propTypes = {
   comment: PropTypes.object, 
   postId: PropTypes.string,
+  isPostAuthor: PropTypes.bool,
 };
 
 export default Comment;

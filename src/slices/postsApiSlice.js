@@ -41,14 +41,16 @@ export const postsApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: ["Posts"],
     }),
     updatePost: builder.mutation({
-      query: ({ postId, postData }) => ({
+      query: ({postId, postData}) => {
+        console.log({postData})
+      return {
         url: `${POSTS_URL}/${postId}`,
         method: "PUT",
         body: postData,
         headers: {
           Authorization: `Bearer ${localStorage.getItem("userToken")}`,
         },
-      }),
+      }},
       invalidatesTags: ["Posts"],
     }),
     deletePost: builder.mutation({

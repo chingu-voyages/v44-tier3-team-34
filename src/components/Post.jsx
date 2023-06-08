@@ -2,15 +2,17 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDeletePostMutation } from '../slices/postsApiSlice';
 import { FiEdit, AiFillDelete, AiFillLike, BiCommentDetail, FaShareSquare } from "react-icons/all";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import CommentForm from './CommentForm';
 import Comment from './Comment';
+import EditPost from './EditPost';
 import timeSinceDate from '../utilities/timeSinceDate';
 
 const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}) => {
     const [deletePost, { isLoading, isError }] = useDeletePostMutation();
     const [showCommentForm, setShowCommentForm] = useState(false);
     const [showComments, setShowComments] = useState(false);
+    const [showEditPostForm, setShowEditPostForm] = useState(false);
 
     const { user } = useSelector((state) => state.auth);
     const isPostAuthor = user.profile === author._id;
@@ -37,7 +39,10 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                     </ul>
                 </div>
                 {isPostAuthor && <ul className="flex gap-2">
-                    <li><FiEdit/></li>
+                    <li><FiEdit
+                            className="cursor-pointer hover:text-light-green"
+                            onClick={() => setShowEditPostForm(!showEditPostForm)}
+                        /></li>
                     <li>
                         <AiFillDelete
                             className="cursor-pointer hover:text-red-500"
@@ -46,11 +51,14 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                     </li>
                 </ul>}
             </div>
-            <h5 className="px-2 font-medium text-center">{title}</h5>
-            <p className="px-2 text-center">{text}</p>
-            <div className='flex justify-center'>
-                <img className='h-60 w-60' src="src/assets/dogplaceholder.jpg" alt={title}/>
+            <div className={showEditPostForm ? 'hidden' : ""}>
+                <h5 className="px-2 font-medium text-center">{title}</h5>
+                <p className="px-2 text-center">{text}</p>
+                <div className='flex justify-center'>
+                    <img className='h-60 w-60' src="src/assets/dogplaceholder.jpg" alt={title}/>
+                </div>
             </div>
+            {showEditPostForm && <EditPost postTitle={title} postText={text} postId={_id} hideEditPostForm={() => setShowEditPostForm(false)} /> }
             <div className="flex justify-between px-2" >
                 <div className="flex gap-1">{reactions.length}<span>Likes</span></div>
                 <div 
@@ -76,7 +84,7 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                 />}
             {showComments && comments.map((comment) => (
                 <div key={comment._id} className="">
-                    <Comment comment={comment} postId={_id} />
+                    <Comment comment={comment} postId={_id} isPostAuthor={isPostAuthor} />
                 </div>
             ))}
         </div>
