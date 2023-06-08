@@ -21,7 +21,7 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
         console.log("isloading", isLoading, "isError", isError)
     }
     return(
-        <div className="bg-white my-4 flex flex-col py-2 shadow-md border-t sm:m-6 rounded-md">
+        <div className="bg-white my-4 flex flex-col py-2 max-w-4xl shadow-md border-t mx-auto rounded-md">
             <div className="px-2 flex justify-between">
                 <div className="flex gap-2">
                     <div className="rounded-full">

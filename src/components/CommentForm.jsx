@@ -27,11 +27,12 @@ const CommentForm = ({postId, hideCommentForm, displayComments}) => {
         id="text"
         value={text}
         placeholder="Write your comment..."
+        maxLength="180"
         required
       />
       <button
         type="submit"
-        className="bg-light-green text-white rounded py-1.5 px-1.5"
+        className="bg-light-green text-dark-blue rounded py-1.5 px-1.5 hover:bg-opacity-50"
       >
         {isLoading ? "Loading..." : "Comment"}
       </button>
