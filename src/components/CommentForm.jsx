@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAddCommentMutation } from "../slices/postsApiSlice";
-
+import PropTypes from 'prop-types';
 
 const CommentForm = ({postId, hideCommentForm, displayComments}) => {
   const [text, setText] = useState('');
@@ -40,5 +40,11 @@ const CommentForm = ({postId, hideCommentForm, displayComments}) => {
     </form>
   );
 }
+
+CommentForm.propTypes = {
+  postId: PropTypes.string, 
+  hideCommentForm: PropTypes.func, 
+  displayComments: PropTypes.func,
+};
 
 export default CommentForm;

@@ -1,15 +1,12 @@
-import { useGetProfileQuery } from "../slices/profilesApiSlice";
 import { useDeleteCommentMutation } from "../slices/postsApiSlice";
 import { useSelector } from "react-redux";
 import timeSinceDate from "../utilities/timeSinceDate";
 import { FiEdit, AiFillDelete } from "react-icons/all";
-
+import PropTypes from 'prop-types';
 
 const Comment = ({ comment, postId }) => { 
-  // get the comment's author's name
-  const { data: profile } = useGetProfileQuery(comment.author);
   const { user } = useSelector((state) => state.auth);
-  const isCommentAuthor = user.profile === comment.author;
+  const isCommentAuthor = user.profile === comment.author._id;
 
   const { durationInMinutes, duration } = timeSinceDate(comment.createdAt);
 
@@ -20,10 +17,10 @@ const Comment = ({ comment, postId }) => {
       <div className="flex justify-between">
         <div className="flex gap-2">
             <div className="rounded-full">
-                <img src="src/assets/placeholder.png" alt={profile?.name || "profile picture"} className="rounded-full h-10 w-10 object-cover"/>
+                <img src="src/assets/placeholder.png" alt={comment?.author?.name || "profile picture"} className="rounded-full h-10 w-10 object-cover"/>
             </div>
             <div className="flex gap-2 items-center">
-              <span>{profile?.name}</span>
+              <span>{comment?.author?.name}</span>
               <span className="text-sm text-gray-500">
                 {durationInMinutes > 0 ? `${duration} ago` : "Just Commented"}
               </span>
@@ -43,5 +40,10 @@ const Comment = ({ comment, postId }) => {
     </div>
   );
 }
+
+Comment.propTypes = {
+  comment: PropTypes.object, 
+  postId: PropTypes.string,
+};
 
 export default Comment;
