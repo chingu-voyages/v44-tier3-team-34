@@ -86,7 +86,7 @@ export const postsApiSlice = apiSlice.injectEndpoints({
     }),
     addReaction: builder.mutation({
       query: (reactionData) => ({
-        url: `${POSTS_URL}/${reactionData.postId}/comments`,
+        url: `${POSTS_URL}/${reactionData.postId}/reactions`,
         method: "POST",
         body: { reaction: reactionData.reaction },
         headers: {
@@ -116,4 +116,6 @@ export const {
   useDeletePostMutation,
   useAddCommentMutation,
   useDeleteCommentMutation,
+  useAddReactionMutation,
+  useDeleteReactionMutation,
 } = postsApiSlice;
