@@ -1,3 +1,6 @@
+import placeholder from '../assets/placeholder.png';
+import dogplaceholder from '../assets/dogplaceholder.jpg';
+
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDeletePostMutation } from '../slices/postsApiSlice';
@@ -27,7 +30,7 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
             <div className="px-2 flex justify-between">
                 <div className="flex gap-2">
                     <div className="rounded-full">
-                        <img src="src/assets/placeholder.png" alt={author.name} className="rounded-full h-14 w-14 object-cover"/>
+                        <img src={placeholder} alt={author.name} className="rounded-full h-14 w-14 object-cover"/>
                     </div>
                     <ul>
                         <li className="font-semibold">{author.name}</li>
@@ -55,7 +58,7 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                 <h5 className="px-2 font-medium text-center">{title}</h5>
                 <p className="px-2 text-center">{text}</p>
                 <div className='flex justify-center'>
-                    <img className='h-60 w-60' src="src/assets/dogplaceholder.jpg" alt={title}/>
+                    <img className='h-60 w-60' src={dogplaceholder} alt={title}/>
                 </div>
             </div>
             {showEditPostForm && <EditPost postTitle={title} postText={text} postId={_id} hideEditPostForm={() => setShowEditPostForm(false)} /> }
