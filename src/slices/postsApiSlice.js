@@ -84,6 +84,27 @@ export const postsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Posts"],
     }),
+    addReaction: builder.mutation({
+      query: (reactionData) => ({
+        url: `${POSTS_URL}/${reactionData.postId}/comments`,
+        method: "POST",
+        body: { reaction: reactionData.reaction },
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+        },
+      }),
+      invalidatesTags: ["Posts"],
+    }),
+    deleteReaction: builder.mutation({
+      query: ({postId, reactionId}) => ({
+        url: `${POSTS_URL}/${postId}/reactions/${reactionId}`,
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+        },
+      }),
+      invalidatesTags: ["Posts"],
+    }),
   }),
 });
 
