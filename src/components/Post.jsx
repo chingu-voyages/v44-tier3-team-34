@@ -10,7 +10,6 @@ import CommentForm from './CommentForm';
 import Comment from './Comment';
 import EditPost from './EditPost';
 import timeSinceDate from '../utilities/timeSinceDate';
-import { set } from 'mongoose';
 
 const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}) => {
     const [deletePost, { isLoading, isError }] = useDeletePostMutation();
