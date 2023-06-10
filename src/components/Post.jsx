@@ -4,18 +4,20 @@ import dogplaceholder from '../assets/dogplaceholder.jpg';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDeletePostMutation, useAddReactionMutation, useDeleteReactionMutation } from '../slices/postsApiSlice';
-import { FiEdit, AiFillDelete, AiFillLike, BiCommentDetail, FaShareSquare } from "react-icons/all";
+import { FiEdit, AiFillDelete, AiOutlineLike, AiFillLike, BiCommentDetail, FaShareSquare } from "react-icons/all";
 import PropTypes from 'prop-types';
 import CommentForm from './CommentForm';
 import Comment from './Comment';
 import EditPost from './EditPost';
 import timeSinceDate from '../utilities/timeSinceDate';
+import { set } from 'mongoose';
 
 const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}) => {
     const [deletePost, { isLoading, isError }] = useDeletePostMutation();
     const [showCommentForm, setShowCommentForm] = useState(false);
     const [showComments, setShowComments] = useState(false);
     const [showEditPostForm, setShowEditPostForm] = useState(false);
+    const [likeClicked, setLikeClicked] = useState(false);
 
     const [addReaction] = useAddReactionMutation();
     const [deleteReaction] = useDeleteReactionMutation();
@@ -29,15 +31,19 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
         console.log("isloading", isLoading, "isError", isError)
     }
 
+    const isLiked = reactions.find((reaction) => reaction.author === user.profile);
+
     const handleClickLike = () => {
         const reaction = reactions.find((reaction) => reaction.author === user.profile);
         if(reaction){
-            deleteReaction({postId: _id, reactionId: reaction._id})
+            deleteReaction({postId: _id, reactionId: reaction._id});
+            setLikeClicked(false);
         } else {
-            addReaction({postId: _id, reaction: "Like"})
+            setLikeClicked(true);
+            addReaction({postId: _id, reaction: "Like"});
         }
     }
-    
+
     return(
         <div className="bg-white my-4 flex flex-col py-2 max-w-4xl shadow-md border-t mx-auto rounded-md">
             <div className="px-2 flex justify-between">
@@ -85,10 +91,12 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                 </div>
             </div>
             <ul className="flex justify-between px-2 pb-4">
-                <li><AiFillLike
-                        className="cursor-pointer hover:text-light-green"
-                        onClick={handleClickLike}
-                    /></li>
+                <li
+                    className="cursor-pointer hover:text-light-green"
+                    onClick={handleClickLike}
+                >
+                    {isLiked ? <AiFillLike className={likeClicked ? "animate-ping-once" : ""}/> : <AiOutlineLike/>}
+                </li>
                 <li 
                     onClick={() => setShowCommentForm(!showCommentForm)}
                     className="cursor-pointer hover:text-light-green"
