@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import timeSinceDate from "../utilities/timeSinceDate";
 import { FiEdit, AiFillDelete } from "react-icons/all";
 import PropTypes from 'prop-types';
+import placeholder from '../assets/placeholder.png';
 
 const Comment = ({ comment, postId, isPostAuthor }) => { 
   const { user } = useSelector((state) => state.auth);
@@ -17,7 +18,7 @@ const Comment = ({ comment, postId, isPostAuthor }) => {
       <div className="flex justify-between">
         <div className="flex gap-2">
             <div className="rounded-full">
-                <img src="src/assets/placeholder.png" alt={comment?.author?.name || "profile picture"} className="rounded-full h-10 w-10 object-cover"/>
+                <img src={placeholder} alt={comment?.author?.name || "profile picture"} className="rounded-full h-10 w-10 object-cover"/>
             </div>
             <div className="flex gap-2 items-center">
               <span>{comment?.author?.name}</span>
