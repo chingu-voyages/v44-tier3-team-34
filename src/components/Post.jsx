@@ -3,8 +3,8 @@ import dogplaceholder from '../assets/dogplaceholder.jpg';
 
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useDeletePostMutation } from '../slices/postsApiSlice';
-import { FiEdit, AiFillDelete, AiFillLike, BiCommentDetail, FaShareSquare } from "react-icons/all";
+import { useDeletePostMutation, useAddReactionMutation, useDeleteReactionMutation } from '../slices/postsApiSlice';
+import { FiEdit, AiFillDelete, AiOutlineLike, AiFillLike, BiCommentDetail, FaShareSquare } from "react-icons/all";
 import PropTypes from 'prop-types';
 import CommentForm from './CommentForm';
 import Comment from './Comment';
@@ -16,6 +16,11 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
     const [showCommentForm, setShowCommentForm] = useState(false);
     const [showComments, setShowComments] = useState(false);
     const [showEditPostForm, setShowEditPostForm] = useState(false);
+    const [likeClicked, setLikeClicked] = useState(false); // for animation
+    const [deleteClicked, setDeleteClicked] = useState(false); // for animation
+
+    const [addReaction] = useAddReactionMutation();
+    const [deleteReaction] = useDeleteReactionMutation();
 
     const { user } = useSelector((state) => state.auth);
     const isPostAuthor = user.profile === author._id;
@@ -25,6 +30,25 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
     if(isError){
         console.log("isloading", isLoading, "isError", isError)
     }
+
+    const isLiked = reactions.find((reaction) => reaction.author === user.profile);
+
+    const handleClickLike = () => {
+        const reaction = reactions.find((reaction) => reaction.author === user.profile);
+        if(reaction){
+            setLikeClicked(false);
+            deleteReaction({postId: _id, reactionId: reaction._id});
+        } else {
+            setLikeClicked(true);
+            addReaction({postId: _id, reaction: "Like"});
+        }
+    }
+
+    const handleDeletePost = () => {
+        setDeleteClicked(true);
+        deletePost(_id);
+    }
+
     return(
         <div className="bg-white my-4 flex flex-col py-2 max-w-4xl shadow-md border-t mx-auto rounded-md">
             <div className="px-2 flex justify-between">
@@ -48,8 +72,8 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                         /></li>
                     <li>
                         <AiFillDelete
-                            className="cursor-pointer hover:text-red-500"
-                            onClick={() => deletePost(_id)}
+                            className={`cursor-pointer hover:text-red-500 ${deleteClicked ? "animate-ping-once" : ""}`}
+                            onClick={handleDeletePost}
                         />
                     </li>
                 </ul>}
@@ -72,7 +96,12 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                 </div>
             </div>
             <ul className="flex justify-between px-2 pb-4">
-                <li><AiFillLike/></li>
+                <li
+                    className="cursor-pointer hover:text-light-green"
+                    onClick={handleClickLike}
+                >
+                    {isLiked || likeClicked ? <AiFillLike className={likeClicked ? "animate-ping-once" : ""}/> : <AiOutlineLike/>}
+                </li>
                 <li 
                     onClick={() => setShowCommentForm(!showCommentForm)}
                     className="cursor-pointer hover:text-light-green"

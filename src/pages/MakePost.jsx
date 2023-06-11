@@ -40,7 +40,7 @@ function MakePost() {
     return (
       <div className='bg-page-color min-h-screen pb-8'>
             <Header />
-            <h1>MakePost</h1>
+            <h1 className="w-2/3 m-auto pt-8 text-3xl font-medium text-center">Make a Post</h1>
             <form onSubmit={submitHandler} className="w-80 m-auto flex justify-center flex-col gap-y-4 my-9">  
                 <input 
                   onChange={(e) => setTitle(e.target.value)} 

@@ -28,6 +28,9 @@ export default {
         DEFAULT: '2px 2px 4px black',
         lg: '0 8px 16px black',
       },
+      animation: {
+        'ping-once': 'ping 0.8s cubic-bezier(0.4, 0, 0.6, 1) 1',
+      }
     },
   },
   plugins: [
