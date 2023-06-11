@@ -16,7 +16,8 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
     const [showCommentForm, setShowCommentForm] = useState(false);
     const [showComments, setShowComments] = useState(false);
     const [showEditPostForm, setShowEditPostForm] = useState(false);
-    const [likeClicked, setLikeClicked] = useState(false);
+    const [likeClicked, setLikeClicked] = useState(false); // for animation
+    const [deleteClicked, setDeleteClicked] = useState(false); // for animation
 
     const [addReaction] = useAddReactionMutation();
     const [deleteReaction] = useDeleteReactionMutation();
@@ -35,12 +36,17 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
     const handleClickLike = () => {
         const reaction = reactions.find((reaction) => reaction.author === user.profile);
         if(reaction){
-            deleteReaction({postId: _id, reactionId: reaction._id});
             setLikeClicked(false);
+            deleteReaction({postId: _id, reactionId: reaction._id});
         } else {
             setLikeClicked(true);
             addReaction({postId: _id, reaction: "Like"});
         }
+    }
+
+    const handleDeletePost = () => {
+        setDeleteClicked(true);
+        deletePost(_id);
     }
 
     return(
@@ -66,8 +72,8 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                         /></li>
                     <li>
                         <AiFillDelete
-                            className="cursor-pointer hover:text-red-500"
-                            onClick={() => deletePost(_id)}
+                            className={`cursor-pointer hover:text-red-500 ${deleteClicked ? "animate-ping-once" : ""}`}
+                            onClick={handleDeletePost}
                         />
                     </li>
                 </ul>}
@@ -94,7 +100,7 @@ const Post = ({post: {_id, author, createdAt, title, text, reactions, comments}}
                     className="cursor-pointer hover:text-light-green"
                     onClick={handleClickLike}
                 >
-                    {isLiked ? <AiFillLike className={likeClicked ? "animate-ping-once" : ""}/> : <AiOutlineLike/>}
+                    {isLiked || likeClicked ? <AiFillLike className={likeClicked ? "animate-ping-once" : ""}/> : <AiOutlineLike/>}
                 </li>
                 <li 
                     onClick={() => setShowCommentForm(!showCommentForm)}
