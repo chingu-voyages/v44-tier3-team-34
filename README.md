@@ -3,9 +3,19 @@
 
   <br/>
 
-  <h1><b>Pet pals- Voyage tasks</b></h1>
+  <h1><b>Pet Pals- Chingu Voyage</b></h1>
 
 </div>
+
+<!-- LIVE DEMO -->
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+
+- [PetPals Live](https://chingu-petpals.netlify.app/)
+ Currently the server is hosted on Render may need to spin up when starting a session. Please be patient and allow up to 30 seconds when first loggin in.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- TABLE OF CONTENTS -->
 
@@ -37,57 +47,73 @@
 
 > Welcome to PetPals, the ultimate social media platform for pet lovers! Connect, share, and celebrate the joy of your furry friends. Join us today to embark on a pet-inspired journey with PetPals!
 
-**[Pet pals]** is a...
+**[Pet pals]** is a social media app for pet owners that brings joy and helps them connect with each other. Our app will provide a platform for users to share photos and stories about their pets, find and join pet-related events in their local community, and connect with other pet owners for playdates and pet-sitting arrangements.
+
+### Users:
+1. As a busy pet owner, I want to be able to easily find and connect with other pet owners in my area without having to spend a lot of time searching through different websites or social media platforms.
+2. As a new dog owner who just moved to a new city, I am feeling lonely and disconnected without my usual social support network. I have been looking for ways to meet other dog owners in her area but haven’t had much luck. I’m excited to try out a social media app for pet owners where I can connect with other dog owners in my neighborhood and set up play dates for my pup.
+3. I have a unique pet with special needs and I want to be able to connect with other pet owners who have similar experiences and can offer advice and support.
+
+A user is able to:
+-Create an account and user profile and login.
+-Create posts and categorize them.
+-View the feed to browse other users' posts.
+-Interact with other users by liking and commenting on their posts.
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
 
-<details>
-  <summary>Client</summary>
+## Client
   <ul>
-    <li>Node</li>
+    <li>React</li>
     <li>Vite</li>
+    <li>Node</li>  
     <li>Redux</li>
+    <li>Redux toolkit query</li>
     <li>Tailwind</li>
     <li>font awesome</li>
     <li>HTML</li>
     <li>CSS</li>
   </ul>
-</details>
 
-<details>
-  <summary>Server</summary>
+## Server
   <ul>
-    <li>Not applicable</li>
+    <li>NodeJS</li>
+    <li>Express</li>
+    <li>bcrypt</li>
+    <li>jsonwebtoken</li>
+    <li>Mongo DB</li>
   </ul>
-</details>
 
-<details>
-<summary>Database</summary>
-  <ul>
-    <li>Not applicable</li>
-  </ul>
-</details>
 
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
 
-
 - **API network calls**
 - **User authentication**
+- **Create account, login, change password**
 - **ES6 and Modularization**
+- **Post a story about pets and select from categories**
+- **Add Like reactions on posts**
+- **Comment on posts**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LIVE DEMO -->
+<!-- FUTURE FEATURES -->
 
-## 🚀 Live Demo <a name="live-demo"></a>
+## 🔭 Future Features <a name="future-features"></a>
 
+- **Share or repost**
+- **Add friends**
+- **Search posts by category or friends**
+- **Add photos or video to profile and posts**
+- **Create chat groups**
+- **Search for other pet users with same interests**
 
-- [Currently not available]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -175,40 +201,31 @@ You can deploy this project using:
 
 <!-- AUTHORS -->
 
-## 👥 Authors <a name="Catherine Matson"></a>
+## 👥 Authors <a name="Ntihinduka Alpha"></a>
 
 :man_technologist:  **Catherine Matson** :writing_hand: 
 
 - GitHub: [githubhandle](https://github.com/CCMatson)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/catherine-c-matson/) 
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/catherine-c-matson/)
 
-## 👥 Authors <a name="Ntihinduka Alpha"></a>
 
-:man_technologist:  **Greg Nicholas** :writing_hand: 
+:man_technologist:  **Ntihinduka Alpha** :writing_hand: 
 
-- GitHub: [githubhandle](https://github.com/jamesCodes808)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/greg-schoenberg/) 
+- GitHub: [githubhandle](https://github.com/AlphaNtihinduka)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/ntihinduka-alpha/) 
 
-## 👥 Authors <a name="Ntihinduka Alpha"></a>
 
 :man_technologist:  **James Ian** :writing_hand: 
 
-- GitHub: [githubhandle](https://github.com/GregNicholas)
+- GitHub: [githubhandle](https://github.com/jamesCodes808)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/james-ian-ragasa-solima/) 
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+:man_technologist:  **Greg Nicholas** :writing_hand: 
 
-<!-- FUTURE FEATURES -->
-
-## 🔭 Future Features <a name="future-features"></a>
-
-
-- **Post the story about pets**
-- **Like and share the post**
-- **Create chat groups**
-- **Search for other pet users with same interests**
-
+- GitHub: [githubhandle](https://github.com/GregNicholas)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/greg-schoenberg/)
+  
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -249,7 +266,7 @@ We would like to thank all the contributors and chingu.
 
 - **How can i contribute to this project?**
 
-  - Just clone the project and create a pul request with a well detailed feature intended to be added
+  - Just clone the project and create a pull request with a well detailed feature intended to be added
 
 - **Can I add external libraries?**
 
