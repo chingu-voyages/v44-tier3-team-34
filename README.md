@@ -25,6 +25,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
+    - [🔭 Future Features](#future-features)
   - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
@@ -34,7 +35,6 @@
   - [Run tests](#run-tests)
   - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
@@ -90,7 +90,7 @@ A user is able to:
 
 <!-- Features -->
 
-### Key Features <a name="key-features"></a>
+## Key Features <a name="key-features"></a>
 
 - **API network calls**
 - **User authentication**
@@ -221,7 +221,7 @@ You can deploy this project using:
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/james-ian-ragasa-solima/) 
 
 
-:man_technologist:  **Greg Nicholas** :writing_hand: 
+:man_technologist:  **Greg Schoenberg** :writing_hand: 
 
 - GitHub: [githubhandle](https://github.com/GregNicholas)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/greg-schoenberg/)
